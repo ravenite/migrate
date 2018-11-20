@@ -1,0 +1,11 @@
+name: Person
+description: 'Provides Person content type and related configuration. '
+type: module
+core: 8.x
+dependencies:
+  - field
+  - menu_ui
+  - node
+  - options
+  - path
+  - user

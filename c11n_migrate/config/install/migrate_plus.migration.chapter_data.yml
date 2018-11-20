@@ -1,0 +1,77 @@
+uuid: d53d96c6-8eb7-4f66-9bf8-200d0364e684
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - c11n_migrate
+# The source data is in CSV files, so we use the 'csv' source plugin.
+id: chapter_data
+label: chapters migration
+migration_tags:
+  - node
+  - chapterdata
+source:
+  plugin: csv
+  # Full path to the file.
+  path: 'public://import/chapters.csv'
+  # The number of rows at the beginning which are not data.
+  header_row_count: 1
+  # These are the field names from the source file representing the key
+  # uniquely identifying each game - they will be stored in the migration
+  # map table as columns sourceid1, sourceid2, and sourceid3.
+  keys:
+    - id
+  # Here we identify the columns of interest in the source file. Each numeric
+  # key is the 0-based index of the column. For each column, the key below
+  # (e.g., "start_date") is the field name assigned to the data on import, to
+  # be used in field mappings below. The value is a user-friendly string for
+  # display by the migration UI.
+  column_names:
+    # So, here we're saying that the first field (index 0) on each line will
+    # be stored in the start_date field in the Row object during migration, and
+    # that name can be used to map the value below. "Date of game" will appear
+    # in the UI to describe this field.
+    0:
+      id: id
+    1:
+      chapter: chapter
+    2:
+      website: website
+    3:
+      facebook: facebook
+    4:
+      twitter: twitter
+    5:
+      director1: director1
+    6:
+      director2: director2
+
+process:
+  # The content (node) type we are creating is 'people'.
+  type:
+    plugin: default_value
+    default_value: chapter
+  # Most fields can be mapped directly - we just specify the destination (D8)
+  # field and the corresponding field name from above, and the values will be
+  # copied in.
+  field_id: id
+  title: chapter
+  field_website: website
+  field_facebook: facebook
+  field_twitter: twitter
+  field_director1: director1
+  field_director2: director2
+
+destination:
+  # Here we're saying that each row of data (line from the CSV file) will be
+  # used to create a node entity.
+  plugin: entity:node
+# List any optional or required migration dependencies.
+# Requried means that 100% of the content must be migrated
+# Optional means that that the other dependency should be run first but if there
+# are items from the dependant migration that were not successful, it will still
+# run the migration.
+migration_dependencies:
+  required: {}
+  optional: {}

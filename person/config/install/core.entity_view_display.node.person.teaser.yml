@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.person.field_chap
+    - field.field.node.person.field_city
+    - field.field.node.person.field_first
+    - field.field.node.person.field_last
+    - field.field.node.person.field_persontype
+    - field.field.node.person.field_pid
+    - field.field.node.person.field_state
+    - field.field.node.person.field_street1
+    - field.field.node.person.field_street2
+    - field.field.node.person.field_year
+    - field.field.node.person.field_zip
+    - node.type.person
+  module:
+    - user
+id: node.person.teaser
+targetEntityType: node
+bundle: person
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_chap: true
+  field_city: true
+  field_first: true
+  field_last: true
+  field_persontype: true
+  field_pid: true
+  field_state: true
+  field_street1: true
+  field_street2: true
+  field_year: true
+  field_zip: true

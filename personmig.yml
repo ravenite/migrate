@@ -1,0 +1,60 @@
+id: personmig
+label: person migration
+source:
+  plugin: csv
+  path: 'public://import/alumni.csv'
+  header_row_count: 1
+  keys:
+    - pid
+  column_names:
+    0:
+      pid: pid
+    1:
+      year: year
+    2:
+      persontype: persontype
+    3:
+      first: first
+    4:
+      last: last
+    5:
+      chapter: chapter
+    6:
+      street1: street1
+    7:
+      street2: street2
+    8:
+      city: city
+    9:
+      state: state
+    10:
+      zip: zip
+    11:
+      chap: chap
+process:
+  type:
+    plugin: default_value
+    default_value: person
+  field_pid: pid
+  field_year: year  
+  title:
+    plugin: concat
+    source:
+      - first
+      - last
+    delimiter: ' '
+  field_persontype: persontype
+  field_first: first
+  field_last: last
+  field_chapter: chapter
+  field_street1: street1
+  field_street2: street2
+  field_city: city
+  field_state: state
+  field_zip: zip
+  field_chap: chap
+destination:
+  plugin: entity:node
+migration_dependencies:
+  required: {}
+  optional: {}
