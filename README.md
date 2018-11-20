@@ -1,0 +1,2 @@
+# migrate
+compartmentalize my migrations
