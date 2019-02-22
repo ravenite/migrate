@@ -1,0 +1,17 @@
+uuid: 1da159ed-748c-4b61-bd6c-3a3bf2b74e3a
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: candidate_photo
+label: 'Candidate Photo (required dimensions:  150×210 )'
+effects:
+  60954df5-5651-4681-8a4b-bb8aa7e78518:
+    uuid: 60954df5-5651-4681-8a4b-bb8aa7e78518
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 150
+      height: 210
+      crop_type: focal_point

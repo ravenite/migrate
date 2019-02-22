@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_district_and_position_titl
+    - node.type.leadership
+id: node.leadership.field_district_and_position_titl
+field_name: field_district_and_position_titl
+entity_type: node
+bundle: leadership
+label: 'District and Position Title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

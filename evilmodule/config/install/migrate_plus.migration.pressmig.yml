@@ -1,0 +1,33 @@
+id: pressmig
+label: press migration
+source:
+  plugin: csv
+  path: 'public://import/press.csv'
+  header_row_count: 1
+  keys:
+    - nid
+  column_names:
+    0:
+      nid: nid
+    1:
+      title: title
+    2:
+      body: body
+    3:
+      made: made
+process:
+  title: title
+  body: body
+  created:
+    plugin: format_date
+    from_format: 'Y-m-d'
+    to_format: 'U'
+    source: made
+  status:
+    plugin: default_value
+    default_value: 1
+  type:
+    plugin: default_value
+    default_value: press_release
+destination:
+  plugin: entity:node

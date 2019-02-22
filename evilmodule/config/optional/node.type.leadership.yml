@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Leadership
+type: leadership
+description: 'Please use content type to feature an individual "Leader" on the CBC PAC Leadership page'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

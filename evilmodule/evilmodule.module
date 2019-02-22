@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains evilmodule.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function evilmodule_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the evilmodule module.
+    case 'help.page.evilmodule':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('migbg') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function evilmodule_theme() {
+  return [
+    'evilmodule' => [
+      'render element' => 'children',
+    ],
+  ];
+}

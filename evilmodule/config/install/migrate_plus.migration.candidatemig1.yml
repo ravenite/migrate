@@ -1,0 +1,35 @@
+id: candidatemig1
+label: candidate migration
+source:
+  plugin: csv
+  path: 'public://import/candidates.csv'
+  header_row_count: 1
+  keys:
+    - nid
+  column_names:
+    0:
+      nid: nid
+    1:
+      title: title
+    2:
+      website: website
+    3:
+      image: image
+    4:
+      body: body
+    5:
+      link: link
+process:
+  title: title
+  field_website_link: website
+  field_primary_image: image
+  body: body
+  field_link: link
+  status:
+    plugin: default_value
+    default_value: 1
+  type:
+    plugin: default_value
+    default_value: candidate
+destination:
+  plugin: entity:node

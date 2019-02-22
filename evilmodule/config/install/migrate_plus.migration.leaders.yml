@@ -1,0 +1,29 @@
+id: leaders
+label: leadership migration
+source:
+  plugin: csv
+  path: 'public://import/leaders.csv'
+  header_row_count: 1
+  keys:
+    - nid
+  column_names:
+    0:
+      nid: nid
+    1:
+      title: title
+    2:
+      body: body
+    3:
+      position: position
+process:
+  title: title
+  body: body
+  field_district_and_position_titl: position
+  status:
+    plugin: default_value
+    default_value: 1
+  type:
+    plugin: default_value
+    default_value: leadership
+destination:
+  plugin: entity:node
