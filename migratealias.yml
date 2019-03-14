@@ -1,0 +1,46 @@
+id: migratealias
+label: migration of aliases
+source:
+  plugin: csv
+  path: 'public://import/hpablog.csv'
+  header_row_count: 1
+  constants:
+    slash: '/'
+  keys:
+    - bid
+  column_names:
+    0:
+      bid: bid
+    1:
+      title: title
+    2:
+      summary: summary
+    3:
+      body: body
+    4:
+      made: made
+    5:
+      path: path
+process:
+  field_bid: bid
+  title: title
+  field_summary: summary
+  body: body
+  created:
+    plugin: format_date
+    from_format: 'Y-m-d'
+    to_format: 'U'
+    source: made
+  status:
+    plugin: default_value
+    default_value: 1
+  type:
+    plugin: default_value
+    default_value: blog
+  path:
+    plugin: concat
+    source:
+      - constants/slash
+      - path
+destination:
+  plugin: entity:node
